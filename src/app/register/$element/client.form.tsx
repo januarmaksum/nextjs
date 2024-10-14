@@ -1,24 +1,24 @@
 "use client";
 
 import * as React from "react";
+import { IRq_FormRegister } from "../register.interface";
 import {
-  CFN_HandleInputChangeLogin,
-  CFN_HandleSubmitLogin,
-} from "../$function/cfn.login";
-import { IRq_FormLogin } from "../login.interface";
+  CFN_HandleInputChangeRegister,
+  CFN_HandleSubmitRegister,
+} from "../$function/cfn.register";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const CE_Form_Login = () => {
+const CE_Form_Register = () => {
   const router = useRouter();
-  const [formData, setFormData] = React.useState<IRq_FormLogin>({
+  const [formData, setFormData] = React.useState<IRq_FormRegister>({
     email: "",
     password: "",
   });
 
   const CFN_handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const success = await CFN_HandleSubmitLogin(event, formData);
+    const success = await CFN_HandleSubmitRegister(event, formData);
     if (success) {
       router.push("/dashboard");
     }
@@ -27,7 +27,7 @@ const CE_Form_Login = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
-        <h2 className="text-2xl font-bold text-center">Sign in to Apps</h2>
+        <h2 className="text-2xl font-bold text-center">Create an Account</h2>
         <form onSubmit={CFN_handleSubmit} className="space-y-4">
           <div>
             <label
@@ -44,7 +44,7 @@ const CE_Form_Login = () => {
               required
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               onChange={(event) =>
-                CFN_HandleInputChangeLogin(event, setFormData)
+                CFN_HandleInputChangeRegister(event, setFormData)
               }
             />
           </div>
@@ -63,7 +63,7 @@ const CE_Form_Login = () => {
               required
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               onChange={(event) =>
-                CFN_HandleInputChangeLogin(event, setFormData)
+                CFN_HandleInputChangeRegister(event, setFormData)
               }
             />
           </div>
@@ -71,13 +71,13 @@ const CE_Form_Login = () => {
             type="submit"
             className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
-            Sign in
+            Create Account
           </button>
         </form>
         <p className="text-sm text-center text-gray-600">
-          Don&apos;t have an account?{" "}
-          <Link legacyBehavior href="/register">
-            <a className="text-indigo-600 hover:underline">Register</a>
+          Already have an account?{" "}
+          <Link legacyBehavior href="/login">
+            <a className="text-indigo-600 hover:underline">Login</a>
           </Link>
         </p>
       </div>
@@ -85,4 +85,4 @@ const CE_Form_Login = () => {
   );
 };
 
-export default CE_Form_Login;
+export default CE_Form_Register;

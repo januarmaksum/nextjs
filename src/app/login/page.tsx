@@ -1,8 +1,8 @@
-import CE_Form from "./$element/client.form";
+import CE_Form_Login from "./$element/client.form";
 
 const LoginPage = () => {
   return (
-    <CE_Form />
+    <CE_Form_Login />
   );
 };
 
