@@ -1,4 +1,5 @@
 import DashboardLayout from "@/app/dashboard/layout";
+import TitleSection from "@/components/ui/titleSection";
 
 export const metadata = {
   title: "Reports",
@@ -7,7 +8,7 @@ export const metadata = {
 const ReportsPage = () => {
   return (
     <DashboardLayout>
-      <h1 className="text-2xl font-bold mb-4">Reports Content</h1>
+      <TitleSection>Reports Content</TitleSection>
       <p>Your reports content goes here.</p>
     </DashboardLayout>
   );

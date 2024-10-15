@@ -20,7 +20,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="hidden md:flex w-52 h-screen flex-col pt-[56px] border-r border-gray-200 justify-between">
+    <div className="hidden md:flex w-52 h-screen flex-col pt-[56px] border-r border-gray-200 justify-between fixed left-[max(0px,calc(50%-35rem))] pl-3 xl:pl-0 overflow-y-auto">
       <nav className="flex flex-col py-4 pr-4 space-y-1">
         {menuItems.map((item) => {
           const Icon = item.icon;

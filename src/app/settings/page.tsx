@@ -1,4 +1,5 @@
 import DashboardLayout from "@/app/dashboard/layout";
+import TitleSection from "@/components/ui/titleSection";
 
 export const metadata = {
   title: "Settings",
@@ -7,7 +8,7 @@ export const metadata = {
 const SettingsPage = () => {
   return (
     <DashboardLayout>
-      <h1 className="text-2xl font-bold mb-4">Settings Content</h1>
+      <TitleSection>Settings Content</TitleSection>
       <p>Your settings content goes here.</p>
     </DashboardLayout>
   );

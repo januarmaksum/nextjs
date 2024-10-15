@@ -16,7 +16,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full bg-gray-100 py-2 border-b border-gray-300 fixed top-0 left-0 right-0 z-10">
+    <header className="w-full bg-gray-100 py-2 border-b border-gray-300 fixed top-0 left-0 right-0 z-50">
       <div className="container px-2 mx-auto max-w-6xl flex justify-between items-center">
         <div className="text-xl font-semibold flex gap-3 items-center">
           <Image src={Logo} alt="Logo" width={40} height={40} />
