@@ -3,13 +3,19 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const token = request.cookies.get("token");
-  const publicPaths = ["/"];
 
-  if (publicPaths.includes(request.nextUrl.pathname)) {
+  if (request.nextUrl.pathname === "/") {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  if (token) {
+  const publicPaths = ["/login", "/register"];
+  const isPublicPath = publicPaths.includes(request.nextUrl.pathname);
+
+  if (!isPublicPath && !token) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  if (isPublicPath && token) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
@@ -17,5 +23,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/login", "/register"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };
