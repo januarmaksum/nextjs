@@ -1,8 +1,10 @@
+import dynamic from "next/dynamic";
 import TitleSection from "@/components/ui/titleSection";
-import CE_Chart_Bar from "./$element/client.chart.bar";
-import CE_Chart_Column from "./$element/client.chart.column";
-import CE_Chart_Donut from "./$element/client.chart.donut";
-import CE_Chart_Line from "./$element/client.chart.line";
+
+const CE_Chart_Bar = dynamic(() => import('./$element/client.chart.bar'), { ssr: false });
+const CE_Chart_Column = dynamic(() => import('./$element/client.chart.column'), { ssr: false });
+const CE_Chart_Donut = dynamic(() => import('./$element/client.chart.donut'), { ssr: false });
+const CE_Chart_Line = dynamic(() => import('./$element/client.chart.line'), { ssr: false });
 
 export const metadata = {
   title: "Dashboard",
