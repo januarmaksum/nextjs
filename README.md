@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Dashboard
 
-## Getting Started
+This project is a simple dashboard built with Next.js and TypeScript, styled with Tailwind CSS, and featuring chart visualizations powered by ApexCharts. The application includes pages for user login, registration, and viewing statistics.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js** with **TypeScript** for type-safe and fast frontend development.
+- **Tailwind CSS** for responsive and customizable UI styling.
+- **ApexCharts** for data visualization on the Dashboard.
+- **API integration** for Login and Register using [Reqres.in](https://reqres.in/).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Login Page
+Users can log in using the dummy email accounts from Reqres.in. You can use the following dummy emails for testing:
+- michael.lawson@reqres.in
+- lindsay.ferguson@reqres.in
+- tobias.funke@reqres.in
+- More emails can be found at [Reqres.in](https://reqres.in/).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Register Page
+New users can register by providing an email and password. The registration data is sent to Reqres.in's registration API for mock user account creation.
 
-## Learn More
+### 3. Dashboard
+The dashboard includes:
+- **Statistics Page**: Displays visualized data using **ApexCharts** with various chart types like bar, line, and pie charts.
 
-To learn more about Next.js, take a look at the following resources:
+## API Endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project uses the following API endpoints from [Reqres.in](https://reqres.in/):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Login**: `POST https://reqres.in/api/login`
+- **Register**: `POST https://reqres.in/api/register`
 
-## Deploy on Vercel
+## Setup Instructions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run this project locally, follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository**:
+   ```bash
+   git clone git@github.com:januarmaksum/nextjs.git
+   cd nextjs
+   ```
+2. **Install dependencies:**:
+   ```bash
+   npm install
+   ```
+3. **Run the development server:**:
+   ```bash
+   npm run dev
+   ```
