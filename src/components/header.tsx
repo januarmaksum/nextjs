@@ -4,15 +4,12 @@ import { LogOut } from "lucide-react";
 import Image from "next/image";
 import Logo from "@/app/favicon.ico";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
 
 const Header = () => {
-  const router = useRouter();
 
-  const onSignOut = () => {
+  const CFN_HandleLogout = () => {
     Cookies.remove("token");
-    router.refresh();
-    router.replace("/login");
+    window.location.reload();
   };
 
   return (
@@ -24,7 +21,7 @@ const Header = () => {
         </div>
         <div className="space-x-4">
           <button
-            onClick={onSignOut}
+            onClick={CFN_HandleLogout}
             className="px-2 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-1 text-sm"
           >
             <LogOut size={"18px"} />

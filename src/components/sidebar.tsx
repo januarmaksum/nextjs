@@ -9,15 +9,15 @@ import {
   Settings,
 } from "lucide-react";
 
+const menuItems = [
+  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Analytics", href: "/analytics", icon: ChartPie },
+  { name: "Reports", href: "/reports", icon: MessageCircleWarning },
+  { name: "Settings", href: "/settings", icon: Settings },
+];
+
 const Sidebar = () => {
   const pathname = usePathname();
-
-  const menuItems = [
-    { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Analytics", href: "/analytics", icon: ChartPie },
-    { name: "Reports", href: "/reports", icon: MessageCircleWarning },
-    { name: "Settings", href: "/settings", icon: Settings },
-  ];
 
   return (
     <div className="hidden md:flex w-52 h-screen flex-col pt-[56px] border-r border-gray-200 justify-between fixed left-[max(0px,calc(50%-35rem))] pl-3 xl:pl-0 overflow-y-auto">
