@@ -8,9 +8,14 @@ import {
 import { IRq_FormLogin } from "../login.interface";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import useRedirectIfAuthenticated from "@/hooks/useRedirectIfAuthenticated";
+import SubmitButton from "@/components/ui/submitButton";
 
 const CE_Form_Login = () => {
+  useRedirectIfAuthenticated();
   const router = useRouter();
+
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [formData, setFormData] = React.useState<IRq_FormLogin>({
     email: "",
     password: "",
@@ -18,9 +23,15 @@ const CE_Form_Login = () => {
 
   const CFN_handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const success = await CFN_HandleSubmitLogin(event, formData);
-    if (success) {
-      router.push("/dashboard");
+    setIsSubmitting(true);
+    try {
+      const success = await CFN_HandleSubmitLogin(event, formData);
+      if (success) {
+        router.replace("/dashboard");
+        return;
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -67,12 +78,7 @@ const CE_Form_Login = () => {
               }
             />
           </div>
-          <button
-            type="submit"
-            className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            Sign in
-          </button>
+          <SubmitButton isSubmitting={isSubmitting} buttonText="Sign in" />
         </form>
         <p className="text-sm text-center text-gray-600">
           Don&apos;t have an account?{" "}

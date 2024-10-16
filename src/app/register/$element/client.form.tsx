@@ -8,9 +8,14 @@ import {
 } from "../$function/cfn.register";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import SubmitButton from "@/components/ui/submitButton";
+import useRedirectIfAuthenticated from "@/hooks/useRedirectIfAuthenticated";
 
 const CE_Form_Register = () => {
+  useRedirectIfAuthenticated();
   const router = useRouter();
+
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [formData, setFormData] = React.useState<IRq_FormRegister>({
     email: "",
     password: "",
@@ -18,9 +23,15 @@ const CE_Form_Register = () => {
 
   const CFN_handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const success = await CFN_HandleSubmitRegister(event, formData);
-    if (success) {
-      router.push("/dashboard");
+    setIsSubmitting(true);
+    try {
+      const success = await CFN_HandleSubmitRegister(event, formData);
+      if (success) {
+        router.replace("/dashboard");
+        return;
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -46,7 +57,7 @@ const CE_Form_Register = () => {
               onChange={(event) =>
                 CFN_HandleInputChangeRegister(event, setFormData)
               }
-            />
+            />  
           </div>
           <div>
             <label
@@ -67,12 +78,7 @@ const CE_Form_Register = () => {
               }
             />
           </div>
-          <button
-            type="submit"
-            className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            Create Account
-          </button>
+          <SubmitButton isSubmitting={isSubmitting} buttonText="Create Account" />
         </form>
         <p className="text-sm text-center text-gray-600">
           Already have an account?{" "}

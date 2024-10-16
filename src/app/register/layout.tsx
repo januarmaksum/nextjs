@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Toaster } from "react-hot-toast";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,13 +8,8 @@ export const metadata = {
   title: "Create an Account",
 };
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return (
-    <main>
-      {children}
-      <Toaster />
-    </main>
-  );
+const RegisterLayout: React.FC<LayoutProps> = ({ children }) => {
+  return <main>{children}</main>;
 };
 
-export default Layout;
+export default RegisterLayout;
