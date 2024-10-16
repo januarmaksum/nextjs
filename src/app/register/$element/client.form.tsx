@@ -35,10 +35,6 @@ const CE_Form_Register = () => {
     }
   };
 
-  React.useEffect(() => {
-    router.prefetch("/dashboard");
-  }, [router]);
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
